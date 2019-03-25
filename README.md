@@ -56,7 +56,7 @@ No diretório do projeto, você pode executar:
 #### `npm start`
 
 Executa a apu no modo de desenvolvimento.<br>
-abra [http://localhost:5000](http://localhost:5000) para testar no Postman ou aplicativo de sua escolha.
+abra [http://localhost:8000](http://localhost:5000) para testar no Postman ou aplicativo de sua escolha.
 
 O aplicativo é atualizado automaticamente se você fizer edições.<br>
 Você irá ver os erros no console da aplicação.
