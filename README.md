@@ -57,11 +57,15 @@ No diretório do projeto, você pode executar:
 
 #### `npm start`
 
-Executa a apu no modo de desenvolvimento.<br>
-abra [http://localhost:8000](http://localhost:5000) para testar no Postman ou aplicativo de sua escolha.
+Executa a api no modo de desenvolvimento.<br>
+abra [http://localhost:8000](http://localhost:8000) para testar no Postman ou aplicativo de sua escolha.
 
 O aplicativo é atualizado automaticamente se você fizer edições.<br>
 Você irá ver os erros no console da aplicação.
+
+#### `npm test`
+
+Executa todos os testes e retornar no terminal os testes que passaram e os que foram rejeitados.
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
