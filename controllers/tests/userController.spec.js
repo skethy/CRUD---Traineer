@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../../app');
+const app = require('../../index');
 const User = require('../../models/userModel');
 
 beforeAll(() => User.remove({})); // antes de iniciarmos cada teste vamos limpar o banco de dados 
