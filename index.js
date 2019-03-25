@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const userRouter = require('./router/userRouter'); 
+const swaggerUi = require('swagger-ui-express');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/treinamento'); // comando para conectar com o banco de dados
@@ -19,6 +20,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/hello', (req, res) => res.json('Olá Mundo!')); // rota de teste para ver se nossa aplicação esta realmente rodando
 app.use('/user', userRouter());
+
+const swaggerDocument = require('./docs/documentation.json');
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// swagger é o site que a gente viu de documentação e o a depencia que a gente chamou e usou de swaggerUi
+// é usada para exibir o documentação do mesmo jeito que é no site
 
 module.exports = app.listen(8000, () => console.log('Tá rodando')); 
 // app.linten() comando onde o backend ira realmente começar a rodar

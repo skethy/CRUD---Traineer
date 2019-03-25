@@ -24,9 +24,9 @@ const create = async (req, res) => {
 const findAll = async (req, res) => {
   try {
     const users = await User.find({}); //função para procurar todos os usuarios
-    return res.json({ message: 'Usuarios encontrados', users });
+    return res.status(200).json({ message: 'Usuarios encontrados', users });
   } catch (error) {
-    return res.json({ message: 'Deu erro!', error })
+    return res.status(500).json({ message: 'Deu erro!', error })
   }
 };
 
@@ -59,11 +59,11 @@ const update = async (req, res) => {
       }
     );
     if (!updatedUser) {
-      return res.json({ message: 'Usuário não encontrado' });
+      return res.status(404).json({ message: 'Usuário não encontrado' });
     } 
-    return res.send('Usuario atualizado');
+    return res.status(200).send('Usuario atualizado');
   } catch (error) {
-    return res.json({ message: 'Deu erro!', error })
+    return res.status(500).json({ message: 'Deu erro!', error })
   }
 };
 
@@ -73,11 +73,11 @@ const remove = async (req, res) => {
     const { email } = req.params;
     const user = await User.findOneAndRemove({ email: email });
     if (!user) {
-      return res.send('Usuário não encontrado');
+      return res.status(404).send('Usuário não encontrado');
     } 
-    return res.json('Usuario removido');
+    return res.status(200).json('Usuario removido');
   } catch (error) {
-    return res.send('Deu erro!')
+    return res.status(500).send('Deu erro!')
   }
 };
 

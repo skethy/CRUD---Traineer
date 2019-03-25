@@ -38,7 +38,9 @@ Além disso as seguintes ferramentas foram usadas:
 
 [Postman] 
 
-[VSCode] 
+[VSCode]
+
+[Swagger]
 
 Instale as dependências e execute o aplicativo da seguinte maneira:
 
@@ -71,3 +73,4 @@ Você irá ver os erros no console da aplicação.
 [Jest]: <https://jestjs.io/>
 [Postman]: <https://www.getpostman.com/>
 [VSCode]: <https://code.visualstudio.com/>
+[Swagger]: <https://swagger.io>
