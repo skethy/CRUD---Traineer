@@ -10,8 +10,8 @@ mongoose.connect('mongodb://localhost:27017/treinamento'); // comando para conec
 
 const app = express();
 
-app.use(bodyParser.json()); 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); 
 // body parser é modulo que vai passar de linha em linha da requisição enviado do front e ira montar objetos prontos para gente
 // esse objetos são o body, params e heady
 

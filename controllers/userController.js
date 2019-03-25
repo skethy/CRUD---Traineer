@@ -2,14 +2,18 @@ const User = require('../models/userModel');
 
 const create = async (req, res) => {
   try {
-    const { username, password, name } = req.body;
+    const { email, password, name } = req.body;
+    // o body-parser a partir da requisição (req) do frontend monta 3 objetos
+    // o req.body, req.params e req.header
 
+    // crio um novo objeto do tipo User
     const user = new User({
-      username,
+      email,
       password,
       name,
     });
 
+    //salvo esse objeto no banco de dados
     await user.save();
     return res.status(201).json({ message: 'Usuário criado!', user });
   } catch (error) {
@@ -19,7 +23,7 @@ const create = async (req, res) => {
 
 const findAll = async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({}); //função para procurar todos os usuarios
     return res.json({ message: 'Usuarios encontrados', users });
   } catch (error) {
     return res.json({ message: 'Deu erro!', error })
@@ -28,9 +32,10 @@ const findAll = async (req, res) => {
 
 const findOne = async (req, res) => {
   try {
-    const { username } = req.params;
-    const user = await User.findOne({ username: username.toUpperCase() });
-    if (!user) {
+    const { email } = req.params;
+    const user = await User.findOne({ email: email }); //função para procurar um usuario somente
+    // onde o primeiro email é o parametro do banco que vamos procurarar e o segundo é o valor
+    if (!user){
       return res.status(404).json({ message: 'Usuário não encontrado' });
     } 
     return res.status(200).json({ message: 'Usuario encontrado', user });
@@ -41,21 +46,22 @@ const findOne = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const { username: newUsername, password, name } = req.body;
-    const { username } = req.params;
+    const { email: newemail, password, name } = req.body;
+    const { email } = req.params;
     const updatedUser = await User.findOneAndUpdate(
       {
-        username: username.toUpperCase()
+        email: email
       },
       {
-        username: newUsername,
+        email: newemail,
         password,
         name,
       }
     );
-    if (!updatedUser) return res.json({ message: 'Usuário não encontrado' });
-    const user = await User.findOne({ username });
-    return res.json({ message: 'Usuario atualizado', user });
+    if (!updatedUser) {
+      return res.json({ message: 'Usuário não encontrado' });
+    } 
+    return res.send('Usuario atualizado');
   } catch (error) {
     return res.json({ message: 'Deu erro!', error })
   }
@@ -64,12 +70,14 @@ const update = async (req, res) => {
 
 const remove = async (req, res) => {
   try {
-    const { username } = req.params;
-    const user = await User.findOneAndRemove({ username: username.toUpperCase() });
-    if (!user) return res.json({ message: 'Usuário não encontrado' });
-    return res.json({ message: 'Usuario removido', removedUser: user});
+    const { email } = req.params;
+    const user = await User.findOneAndRemove({ email: email });
+    if (!user) {
+      return res.send('Usuário não encontrado');
+    } 
+    return res.json('Usuario removido');
   } catch (error) {
-    return res.json({ message: 'Deu erro!', error })
+    return res.send('Deu erro!')
   }
 };
 

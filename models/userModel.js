@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 // modulo onde vamos criar o nosso modelo (Schema) de usuario no banco de dados
 // onde esse usuario ira ter os campos emailm password, name
