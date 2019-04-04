@@ -1,4 +1,4 @@
-# Treinamento
+# CRUD - Traineer
 
 Este repositório faz parte do processo de treinamento do backend da softeam.
 
