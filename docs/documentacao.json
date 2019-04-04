@@ -1,0 +1,143 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: CRUD - Traineer
+  description: Treinamento 2019
+  termsOfService: nullable
+  contact:
+    name: 'Ulisses Santos Oliveira'
+    email: ufs.ulisses0@gmail.com 
+    url: 'https://github.com/skethy/CRUD---Traineer'
+  license:
+    name: 2019 © SOFTEAM
+    url: 'http://softeam.com.br'
+schemes:
+  - https
+basePath: '/localhost:3000'
+paths:
+  /user:
+    get:
+      summary: Retorna todos os funcionários
+      description: Retorna todos os funcionários
+      tags:
+        - Func
+      parameters: []
+      responses:
+        '200':
+          description: Funcionários Encontrados!
+        '500':
+          description: Erro ao Encontrar os Funcionarios!!
+    post:
+      summary: cria um novo usuário
+      description: criar um novo usuário
+      tags:
+        - Func
+      responses:
+        '201':
+          description: Funcionário Criado!
+          schema:
+            properties:
+              name:
+                type: string
+                example: Nome de Teste
+              cpf:
+                type: number
+                example: 06485295145
+              telefone:
+                type: number
+                example: 79981458745
+              cep:
+                type: string
+                example: 49568941
+              numero:
+                type: number
+                example: 175
+              complemento:
+                type: string
+                example: casa
+            required:
+              - cpf
+              - name
+        '500':
+          description: Erro ao criar"! 
+
+  '/user/{email}':
+    get:
+      summary: Retorna um usuário a partir do email
+      tags:
+        - Func
+      parameters:
+        - name: email
+          in: path
+          description: email do usuário desejado
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Usuário encontrado
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Deu erro!
+    put:
+      summary: Atualiza um Usuário
+      tags:
+        - Func
+      parameters:
+        - name: email
+          in: path
+          required: true
+          type: string
+          format: email
+          description: email do usuário a ser atualizado
+      responses:
+        '200':
+          description: Usuário atualizado
+          schema:
+            properties:
+              email:
+                type: string
+                example: antonio2@hotmail.com
+              password:
+                type: string
+                example: oi1234
+              name:
+                type: string
+                example: antonio bispo
+            required:
+              - email
+        '500':
+          description: Deu erro!
+    delete:
+      summary: Deleta um membro
+      tags:
+        - Func
+      parameters:
+        - name: email
+          in: path
+          required: true
+          type: string
+          format: memberID
+          description: email do usuário a ser deletado
+      responses:
+        '200':
+          description: Usuario removido
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Deu erro!
+definitions:
+  User:
+    type: object
+    required:
+      - email
+    properties:
+      email:
+        type: string
+        example: antonio@hotmail.com
+      password:
+        type: string
+        example: '12345'
+      name:
+        type: string
+        example: antonio
