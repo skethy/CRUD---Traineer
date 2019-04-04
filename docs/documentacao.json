@@ -61,83 +61,92 @@ paths:
         '500':
           description: Erro ao criar"! 
 
-  '/user/{email}':
+  '/user/{cpf}':
     get:
-      summary: Retorna um usuário a partir do email
+      summary: Retorna um usuário a partir do cpf
       tags:
         - Func
       parameters:
-        - name: email
+        - name: cpf
           in: path
-          description: email do usuário desejado
+          description: cpf do usuário desejado
           required: true
           type: string
       responses:
         '200':
-          description: Usuário encontrado
+          description: Funcionário encontrado
         '404':
-          description: Usuário não encontrado
+          description: Funcionário não encontrado
         '500':
           description: Deu erro!
     put:
-      summary: Atualiza um Usuário
+      summary: Atualiza um Funcionário
       tags:
         - Func
       parameters:
-        - name: email
+        - name: cpf
           in: path
           required: true
-          type: string
-          format: email
-          description: email do usuário a ser atualizado
+          type: number
+          format: cpf
+          description: cpf do usuário a ser atualizado
       responses:
         '200':
-          description: Usuário atualizado
+          description: Funcionário atualizado
           schema:
             properties:
-              email:
-                type: string
-                example: antonio2@hotmail.com
-              password:
-                type: string
-                example: oi1234
               name:
                 type: string
-                example: antonio bispo
+                example: Funcionario Teste
+              cpf:
+                type: string
+                example: 65484596257
+              telefone:
+                type: number
+                example: 79984569874
             required:
               - email
         '500':
           description: Deu erro!
     delete:
-      summary: Deleta um membro
+      summary: Deleta um Funcionário
       tags:
         - Func
       parameters:
-        - name: email
+        - name: cpf
           in: path
           required: true
-          type: string
-          format: memberID
-          description: email do usuário a ser deletado
+          type: number
+          format: cpf
+          description: cpf do usuário a ser deletado
       responses:
         '200':
-          description: Usuario removido
+          description: Funcionário removido
         '404':
-          description: Usuário não encontrado
+          description: Funcionário não encontrado
         '500':
           description: Deu erro!
 definitions:
-  User:
+  Func:
     type: object
     required:
-      - email
+      - cpf
     properties:
-      email:
-        type: string
-        example: antonio@hotmail.com
-      password:
-        type: string
-        example: '12345'
       name:
         type: string
-        example: antonio
+        example: Funcionario Teste
+      cpf:
+        type: number
+        example: 65484596257
+      telefone:
+        type: number
+        example: 79984562541
+      cep:
+        type: string
+        example: 49568941
+      numero:
+        type: number
+        example: 175
+      complemento:
+        type: string
+        example: casa
