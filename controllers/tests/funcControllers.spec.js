@@ -49,7 +49,7 @@ describe('Func', () => {
   
     describe('Find', () => {
       test('Should find a user', async () => {
-        const user = await User.create(        {
+        const user = await User.create({
             name: "Ulisses",
             cpf:"06485698541",
             telefone:"79981365084",
@@ -70,4 +70,19 @@ describe('Func', () => {
         expect(response.status).toBe(200);
       });
     })
+
+    describe('Update', () => {
+      test('Should update a user', async () => {
+        const user = await User.create({
+            name: "Fabio",
+            cpf:"12345678998",
+            telefone:"79984569854",
+        });
+        const response = await request(app).put('/user/12345678998',{
+          complemento: "Casa"
+        })
+        expect(response.status).toBe(200);
+      });
+    })
+    
 });
