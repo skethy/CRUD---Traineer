@@ -1,6 +1,7 @@
 # CRUD - Traineer
 
-Este repositório faz parte do processo de treinamento do backend da softeam.
+Este repositório faz parte do processo de treinamento do backend da softeam ministrado Antônio Neto.
+
 
 ### Estrutura de Pastas
 ```
