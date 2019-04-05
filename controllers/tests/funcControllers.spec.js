@@ -32,9 +32,10 @@ describe('Func', () => {
             complemento: "Apt"
           }
         );
-        expect(response.status).toBe(500);
+        expect(response.status).toBe(401);
       });
-      test('Should not employee a without cpf and name', async () => {
+
+      test('Should not create employee without cpf and name', async () => {
         const response = await request(app).post('/user').send(
           {
             telefone:"79911228844",
@@ -43,7 +44,7 @@ describe('Func', () => {
             complemento: "Casa"
           }
         );
-        expect(response.status).toBe(500);
+        expect(response.status).toBe(401);
       })
     });
   

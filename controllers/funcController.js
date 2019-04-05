@@ -17,7 +17,7 @@ const create = async (req, res) => {
     await func.save();
     return res.status(201).json({ message: 'Funcionário Criado!', func });
   } catch (error) {
-    return res.status(500).json({ message: 'Erro ao Criar!'})
+    return res.status(401).json({ message: 'Erro ao Criar!'})
   }
 }; 
 
@@ -27,7 +27,7 @@ const findAll = async (req, res) => {
     return res.status(200).json({ message: 'Funcionários Encontrados', funcs });
   
   } catch (error) {
-    return res.status(500).json({ message: 'Erro ao Encontrar os Funcionarios!', error })
+    return res.status(401).json({ message: 'Erro ao Encontrar os Funcionarios!', error })
   }
 };
 
@@ -40,7 +40,7 @@ const findOne = async (req, res) => {
     } 
     return res.status(200).json({ message: 'Funcionario Encontrado', func });
   } catch (error) {
-    return res.status(500).json({ message: 'Erro ao Encontrar!', error })
+    return res.status(401).json({ message: 'Erro ao Encontrar!', error })
   }
 };
 
@@ -60,7 +60,7 @@ const update = async (req, res) => {
       }
     res.status(200).send({'Funcionario Atualizado': user});
   } catch (error) {
-    return res.status(500).json({ message: 'Erro ao Atualizar!', error })
+    return res.status(401).json({ message: 'Erro ao Atualizar!', error })
   }
 };
 
@@ -74,7 +74,7 @@ const remove = async (req, res) => {
     } 
     return res.status(200).json('Funcionário Removido');
   } catch (error) {
-    return res.status(500).send('Erro!')
+    return res.status(401).send('Erro!')
   }
 };
 
