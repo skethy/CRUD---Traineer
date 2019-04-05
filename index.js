@@ -1,10 +1,10 @@
 const express = require('express'); 
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const userRouter = require('./router/funcRouter'); 
+const mongoose = require('mongoose')
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/funcionarios');
+mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost:27017/funcionarios')
 
 const app = express();
 

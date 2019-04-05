@@ -58,4 +58,16 @@ describe('Func', () => {
         expect(response.status).toBe(200);
       });
     })
+
+    describe('Delete', () => {
+      test('Should delete a user', async () => {
+        const user = await User.create({
+            name: "Lucas",
+            cpf:"78456995248",
+            telefone:"79845123698",
+        });
+        const response = await request(app).delete('/user/78456995248');
+        expect(response.status).toBe(200);
+      });
+    })
 });
