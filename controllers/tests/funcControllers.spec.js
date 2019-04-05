@@ -85,4 +85,10 @@ describe('Func', () => {
       });
     })
     
-});
+    describe('FindAll', () => {
+      test('Should findAll a users', async () => {
+        const response = await request(app).get('/user/');
+        expect(response.status).toBe(200);
+      })
+    })
+})
