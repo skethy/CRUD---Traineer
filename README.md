@@ -1,4 +1,4 @@
-# CRUD - Traineer
+# CRUD - Trainee (SofTeam 2019.1)
 
 Este repositório faz parte do processo de treinamento do backend da softeam ministrado Antônio Neto.
 
